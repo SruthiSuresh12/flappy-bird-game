@@ -7,11 +7,18 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevents scrollbars on mobile */
+}
+
+h1 {
+    font-size: clamp(2em, 8vw, 4em); /* Scales heading font size */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #game-container {
-    width: 320px;
-    height: 480px;
+    width: clamp(250px, 80vw, 400px); /* Sets a minimum and maximum width */
+    height: 70vh; /* Scales with viewport height */
     background-color: #4ec0ca;
     border: 2px solid black;
     position: relative;
@@ -19,19 +26,36 @@ body {
 }
 
 #bird {
-    width: 30px;
-    height: 30px;
+    width: 10%; /* Bird's size is a percentage of container width */
+    height: 10%;
     background-color: yellow;
     border: 1px solid black;
     border-radius: 50%;
     position: absolute;
-    top: 50%;
     left: 20%;
+    transform: translateY(-50%); /* Centers the bird vertically */
+}
+
+.pipe-group {
+    position: absolute;
+    top: 0;
+    width: 15%; /* Pipe width is a percentage of container width */
+    height: 100%;
 }
 
 .pipe {
-    width: 50px;
+    width: 100%;
     background-color: green;
     border: 1px solid black;
-    position: absolute;
 }
+
+.pipe.top {
+    position: absolute;
+    top: 0;
+}
+
+.pipe.bottom {
+    position: absolute;
+    bottom: 0;
+}
+
